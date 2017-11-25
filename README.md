@@ -4,21 +4,21 @@
 ## Setting up the environment
 - Reference can be found [here](http://esp8266.github.io/Arduino/versions/2.3.0/doc/installing.html)
 1. Download Arduino IDE(Integrated Development Environment) from here:  https://www.arduino.cc/en/Main/Software
-2. Go to files and click on the preference in the Arduino IDE, copy the below code in the Additional boards Manager: 
+2. Go to files and click on the preference in the Arduino IDE, copy the below code in the Additional boards Manager:
 `http://arduino.esp8266.com/stable/package_esp8266com_index.json`.   click OK to close the preference Tab.
 3. After completing the above steps , go to Tools and board, and then select board Manager. Search for esp8266 and install the software(`esp8266 by esp8266 community`) for Arduino.
 4. On the Tools menu, configure your board according to the model you are using. The most common options are:
 ```
 Board: NodeMCU, according to its model
 CPU Frequency: 80 MHz
-Upload Speed: 115200 
+Upload Speed: 115200
 ```
 
-Once all the above process been completed we are read to program our esp8266 with Arduino IDE !!! 
+Once all the above process been completed we are read to program our esp8266 with Arduino IDE !!!
 
 ## Blink with NodeMCU
 - Open File -> examples -> ESP8266 -> Blink
-- From the example code: 
+- From the example code:
 ```
 void setup() {
   // initialize digital pin LED_BUILTIN as an output.
@@ -36,7 +36,7 @@ void loop() {
 
 ## Blink plus a LED with NodeMCU
 - NodeMCU PIN MAPPING.   
-Put the following snippet ahead of all the code. 
+Put the following snippet ahead of all the code.
 ```
 #define D0 16
 #define D1 5 // I2C Bus SCL (clock)
@@ -51,18 +51,31 @@ Put the following snippet ahead of all the code.
 #define D10 1 // TX0 (Serial console)
 ```
 - Define a pin instead of the `LED_BUILTIN`
-- On the breadboard: Connect `GND` with the LED short led, and the pin you defined with the long leg 
+- On the breadboard: Connect `GND` with the LED short led, and the pin you defined with the long leg
 
 
-## Control an LED From Web Browser
-### What is UDP ?
-User Datagram Protocol (UDP) is one of the core members of the Internet protocol suite.
-When an app uses UDP, packets are just sent to the recipient. The sender doesn’t wait to make sure the recipient received the packet—it just continues sending the next packets. If the recipient misses a few UDP packets here and there, they are just lost—the sender won’t resend them. Losing all this overhead means the devices can communicate more quickly.
-UDP is used when speed is desirable and error correction isn’t necessary. For example, UDP is frequently used for live broadcasts and online games.
-For example, let’s say you’re watching a live video stream, which are often broadcast using UDP instead of TCP. The server just sends a constant stream of UDP packets to computers watching. If you lose your connection for a few seconds, the video may freeze or get jumpy for a moment and then skip to the current bit of the broadcast. If you experience minor packet-loss, the video or audio may be distorted for a moment as the video continues to play without the missing data.
+## Fade a LED with NodeMCU
+analogWrite
+
+
+## Control a LED From Web Browser
+### What is DHCP (Dynamic Host Configuration Protocol)
+A standardized network protocol used on Internet Protocol (IP) networks. The DHCP is controlled by a DHCP server that dynamically distributes network configuration parameters, such as IP addresses, for interfaces and services. A router or a residential gateway can be enabled to act as a DHCP server. A DHCP server enables computers to request IP addresses and networking parameters automatically, reducing the need for a network administrator or a user to configure these settings manually. In the absence of a DHCP server, each computer or other device on the network needs to be manually assigned to an IP address.
+TCP/IP defines how devices on one network communicate with devices on another network. A DHCP server can manage TCP/IP settings for devices on a network, by automatically or dynamically assigning Internet Protocol (IP) addresses to the devices.
+
+### Your home wifi
+IP address 192.168.0.1 is the address of some home-use broadband router, it’s mainly the default value of a variety of D-Link and Netgear model routers. And you can change it using the network router management console at any time. 192.168.0.1 is a private IPv4 network address. When DHCP assigning IPs, they normally are something like 192.168.0.x.
 
 ### Steps
-- Connect the Esp8266 to the Wi-Fi router using SSID and password of Home network Wifi, where the esp8266 connect to our wifi and create a webserver. The server can be accessed by looking through the serial Monitor of the Arduino window or you can also log into your Wifi router and check for the list of clients connected to your Wi-Fi router.
+1. Connect the Esp8266 to the Wi-Fi router using SSID(the name of network wifi) and password of network Wifi, where the esp8266 connect to our wifi and create a webserver. The server can be accessed by looking through the serial Monitor of the Arduino window or you can also log into your Wifi router and check for the list of clients connected to your Wi-Fi router.
+2. Setup:
+```
+- set up wifi
+- connect to wifi and print IP address that been assigned to the NodeMCU to the serial monitor
+```
+3. Loop:
+Boilerplate code for looking for connection.
+Parse URL, and depends on the request to turn the LED on / off.
 
 
 
@@ -70,11 +83,11 @@ For example, let’s say you’re watching a live video stream, which are often 
 1. Error during loading code
 ```error: cannot access /dev/cu.SLAB_USBtoUART
 error: espcomm_open failed
-the selected serial port 
+the selected serial port
  does not exist or your board is not connected
 error: espcomm_upload_mem failed
 ```
 - Upload speed can be tricky, try changing it.
 - Try resetting the board.
-- Try changing a usb cable. 
-... 
+- Try changing a usb cable.
+...
