@@ -40,9 +40,9 @@ void setup() {
   WiFi.begin(ssid, password);
   
   while (WiFi.status() != WL_CONNECTED) {
-    // keep waiting until connected
-    delay(500);
-    Serial.print(".");
+      // keep waiting until connected
+      delay(500);
+      Serial.print(".");
   }
   Serial.println("WiFi connected");
   
@@ -59,42 +59,45 @@ void loop() {
   // Check if a client has connected
   WiFiClient client = server.available();
   if (!client) {
-    return;
+      return;
   }
   
   // Wait until the client sends some data
   Serial.println("new client");
   while(!client.available()){
-    delay(1);
+      delay(1);
   }
   
   // Read the first line of the request
   String req = client.readStringUntil('\r');
   Serial.println(req);
   client.flush();
-  
-  // Match the request
-  int val;
-  if (req.indexOf("off") != -1)
-    val = LOW;
-  else if (req.indexOf("on") != -1)
-    val = HIGH;
-  else {
-    Serial.println("invalid request");
-    client.stop();
-    return;
+
+
+  // Match request
+  String s = "";
+  if (req.indexOf("/off") != -1) {
+      digitalWrite(D6, LOW);
+      s = "off";
+  } 
+  if (req.indexOf("/on") != -1) {
+      digitalWrite(D6, HIGH);
+      s = "on";
   }
-  digitalWrite(D6, val);
-  
+
   // discard any bytes that have been written to the client but not yet read
   // clears the buffer once all outgoing characters have been sent.
   client.flush();
 
   // Send the response to the client
-  String s = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<!DOCTYPE HTML>\r\n<html>\r\nLED is turned ";
-  s += val ? "on" : "off";
-  s += "</html>\n";
-  client.print(s);
+  client.print("HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<!DOCTYPE HTML>\r\n<html>\r\nLED is turned ");
+  client.println(s);
+  // write some buttons inside!
+  client.println("<br></br>");
+  client.println("<a href=\"on\"><button>Hey Turn Me On</button></a><br>");
+  client.println("<a href=\"off\"><button>Hey Turn Me Off</button></a><br>");
+  client.println("</html>\n");
+  
   delay(1);
   Serial.println("Client disonnected");
 

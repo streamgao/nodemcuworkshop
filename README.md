@@ -78,6 +78,9 @@ Boilerplate code for looking for connection.
 Parse URL, and depends on the request to turn the LED on / off.
 
 
+## Adding interface over the browser
+🤓
+
 
 ## Common problems
 1. Error during loading code
