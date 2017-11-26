@@ -16,7 +16,7 @@ Upload Speed: 115200
 
 Once all the above process been completed we are read to program our esp8266 with Arduino IDE !!!
 
-## Blink with NodeMCU
+## Sample 1: Blink with NodeMCU
 - Open File -> examples -> ESP8266 -> Blink
 - From the example code:
 ```
@@ -34,7 +34,7 @@ void loop() {
 }
 ```
 
-## Blink plus a LED with NodeMCU
+## Sample 2: Blink plus a LED with NodeMCU
 - NodeMCU PIN MAPPING.   
 Put the following snippet ahead of all the code.
 ```
@@ -54,11 +54,11 @@ Put the following snippet ahead of all the code.
 - On the breadboard: Connect `GND` with the LED short led, and the pin you defined with the long leg
 
 
-## Fade a LED with NodeMCU
+## Sample 3: Fade a LED with NodeMCU
 analogWrite
 
 
-## Control a LED From Web Browser
+## Sample 4: Control a LED From Web Browser
 ### What is DHCP (Dynamic Host Configuration Protocol)
 A standardized network protocol used on Internet Protocol (IP) networks. The DHCP is controlled by a DHCP server that dynamically distributes network configuration parameters, such as IP addresses, for interfaces and services. A router or a residential gateway can be enabled to act as a DHCP server. A DHCP server enables computers to request IP addresses and networking parameters automatically, reducing the need for a network administrator or a user to configure these settings manually. In the absence of a DHCP server, each computer or other device on the network needs to be manually assigned to an IP address.
 TCP/IP defines how devices on one network communicate with devices on another network. A DHCP server can manage TCP/IP settings for devices on a network, by automatically or dynamically assigning Internet Protocol (IP) addresses to the devices.
@@ -68,18 +68,20 @@ IP address 192.168.0.1 is the address of some home-use broadband router, it’s 
 
 ### Steps
 1. Connect the Esp8266 to the Wi-Fi router using SSID(the name of network wifi) and password of network Wifi, where the esp8266 connect to our wifi and create a webserver. The server can be accessed by looking through the serial Monitor of the Arduino window or you can also log into your Wifi router and check for the list of clients connected to your Wi-Fi router.
-2. Setup:
-```
-- set up wifi
-- connect to wifi and print IP address that been assigned to the NodeMCU to the serial monitor
-```
-3. Loop:
+2. Setup
+
+Boilerplate code. Set up wifi; Connect to wifi and print IP address that been assigned to the NodeMCU to the serial monitor.
+
+3. Loop
+
 Boilerplate code for looking for connection.
 Parse URL, and depends on the request to turn the LED on / off.
 
 
-## Adding interface over the browser
+## Sample 5: Adding interface over the browser
 🤓
+Let's write some html markup and make it more interactive.
+2 buttons to turn the led on / off.
 
 
 ## Common problems
