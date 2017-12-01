@@ -23,6 +23,10 @@
 const char* ssid = "TP-LINK_E172";
 const char* password = "TP-LINK_E123";
 
+// please put unique charactors here, otherwise you might turn on other's LED!
+const String YOUR_OFF_URL = "?led=turnnnnnnnoff";
+const String YOUR_ON_URL = "?led=turnnnnnnnon";
+
 // Create an instance of the server
 // specify the port to listen on as an argument
 WiFiServer server(80);
@@ -76,11 +80,11 @@ void loop() {
 
   // Match request
   String s = "";
-  if (req.indexOf("/off") != -1) {
+  if (req.indexOf(YOUR_OFF_URL) != -1) {
       digitalWrite(D6, LOW);
       s = "off";
   } 
-  if (req.indexOf("/on") != -1) {
+  if (req.indexOf(YOUR_ON_URL) != -1) {
       digitalWrite(D6, HIGH);
       s = "on";
   }
@@ -94,8 +98,8 @@ void loop() {
   client.println(s);
   // write some buttons inside!
   client.println("<br></br>");
-  client.println("<a href=\"on\"><button>Hey Turn Me On</button></a><br>");
-  client.println("<a href=\"off\"><button>Hey Turn Me Off</button></a><br>");
+  client.println("<a href=\"" + YOUR_ON_URL + "\"><button>Hey Turn Me On</button></a><br>");
+  client.println("<a href=\"" + YOUR_OFF_URL + "\"><button>Hey Turn Me Off</button></a><br>");
   client.println("</html>\n");
   
   delay(1);

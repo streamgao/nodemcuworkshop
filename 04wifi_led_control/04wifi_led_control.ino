@@ -23,6 +23,10 @@
 const char* ssid = "TP-LINK_E172";
 const char* password = "TP-LINK_E123";
 
+// please put unique charactors here, otherwise you might turn on other's LED!
+const String YOUR_OFF_URL = "/off";
+const String YOUR_ON_URL = "/on";
+
 // Create an instance of the server
 // specify the port to listen on as an argument
 WiFiServer server(80);
@@ -75,9 +79,9 @@ void loop() {
   
   // Match the request
   int val;
-  if (req.indexOf("off") != -1)
+  if (req.indexOf(YOUR_OFF_URL) != -1)
     val = LOW;
-  else if (req.indexOf("on") != -1)
+  else if (req.indexOf(YOUR_ON_URL) != -1)
     val = HIGH;
   else {
     Serial.println("invalid request");
