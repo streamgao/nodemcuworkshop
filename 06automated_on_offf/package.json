@@ -1,0 +1,15 @@
+{
+  "name": "06automated_on_offf",
+  "version": "1.0.0",
+  "description": "led control automation -- nodemcu",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stream Gao",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "express": "^4.16.2"
+  }
+}

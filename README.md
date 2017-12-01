@@ -83,6 +83,19 @@ Parse URL, and depends on the request to turn the LED on / off.
 Let's write some html markup and make it more interactive.
 2 buttons to turn the led on / off.
 
+## Sample 6: Automate your LED control through a server
+Steps:
+1. Go to: https://nodejs.org/en/download/ and download nodejs. This would install nodejs and npm onto your laptop automatically, which we will use to build the server.
+2. Write your own node controller: 
+- Open terminal, type `cd ` + a directory
+- Terminal: `npm init`, then fill the rest of the information
+- Terminal: `npm install express; npm install axios`
+- Terminal: `cat > index.js` (or you can manualy create a js file called `index.js`)
+- Write your code inside!
+- Do remember to change the IP address and customize the on / off routes to be your own NodeMCUs!
+- Start server by typing `node index.js` in terminal
+- Now you can see your LEDs get automated by your server
+
 
 ## Common problems
 1. Error during loading code
