@@ -3,7 +3,7 @@
  *  The server will set a GPIO pin depending on the request
  *    http://server_ip/gpio/0 will set the GPIO low,
  *    http://server_ip/gpio/1 will set the GPIO high
- *  server_ip is the IP address of the ESP8266 module, will be 
+ *  server_ip is the IP address of the ESP8266 module, will be
  *  printed to Serial when the module is connected.
  */
 #define D0 16
@@ -20,8 +20,8 @@
 
 #include <ESP8266WiFi.h>
 
-const char* ssid = "TP-LINK_E172";
-const char* password = "TP-LINK_E123";
+const char* ssid = "CounterPulse Guest";
+const char* password = "0084800848";
 
 // please put unique charactors here, otherwise you might turn on other's LED!
 const String YOUR_OFF_URL = "?led=turnnnnnnnoff";
@@ -34,22 +34,22 @@ WiFiServer server(80);
 void setup() {
   Serial.begin(9600);
   delay(10);
-  pinMode(D6, OUTPUT);
-  digitalWrite(D6, 0);
-  
+  pinMode(D1, OUTPUT);
+  digitalWrite(D1, 0);
+
   // Connect to WiFi network
   Serial.print("Connecting to ");
   Serial.println(ssid);
-  
+
   WiFi.begin(ssid, password);
-  
+
   while (WiFi.status() != WL_CONNECTED) {
       // keep waiting until connected
       delay(500);
       Serial.print(".");
   }
   Serial.println("WiFi connected");
-  
+
   // Start the server
   server.begin();
   Serial.println("Server started");
@@ -65,13 +65,13 @@ void loop() {
   if (!client) {
       return;
   }
-  
+
   // Wait until the client sends some data
   Serial.println("new client");
   while(!client.available()){
       delay(1);
   }
-  
+
   // Read the first line of the request
   String req = client.readStringUntil('\r');
   Serial.println(req);
@@ -81,11 +81,11 @@ void loop() {
   // Match request
   String s = "";
   if (req.indexOf(YOUR_OFF_URL) != -1) {
-      digitalWrite(D6, LOW);
+      digitalWrite(D1, LOW);
       s = "off";
-  } 
+  }
   if (req.indexOf(YOUR_ON_URL) != -1) {
-      digitalWrite(D6, HIGH);
+      digitalWrite(D1, HIGH);
       s = "on";
   }
 
@@ -101,11 +101,10 @@ void loop() {
   client.println("<a href=\"" + YOUR_ON_URL + "\"><button>Hey Turn Me On</button></a><br>");
   client.println("<a href=\"" + YOUR_OFF_URL + "\"><button>Hey Turn Me Off</button></a><br>");
   client.println("</html>\n");
-  
+
   delay(1);
   Serial.println("Client disonnected");
 
-  // The client will actually be disconnected 
+  // The client will actually be disconnected
   // when the function returns and 'client' object is detroyed
 }
-
