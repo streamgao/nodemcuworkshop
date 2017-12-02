@@ -84,9 +84,19 @@ Let's write some html markup and make it more interactive.
 2 buttons to turn the led on / off.
 
 ## Sample 6: Automate your LED control through a server
-Steps:
+### What is Node.js ?
+- Node.js is an open source server framework
+- Node.js is free
+- Node.js runs on various platforms (Windows, Linux, Unix, Mac OS X, etc.)
+- Node.js uses JavaScript on the server
+- Node.js can generate dynamic page content
+- Node.js can create, open, read, write, delete, and close files on the server
+- Node.js can collect form data
+- Node.js can add, delete, modify data in your database
+
+### Steps:
 1. Go to: https://nodejs.org/en/download/ and download nodejs. This would install nodejs and npm onto your laptop automatically, which we will use to build the server.
-2. Write your own node controller: 
+2. Write your own node controller:
 - Open terminal, type `cd ` + a directory
 - Terminal: `npm init`, then fill the rest of the information
 - Terminal: `npm install express; npm install axios`

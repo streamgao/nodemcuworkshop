@@ -2,8 +2,11 @@ const express = require('express');
 const app = express();
 const axios = require('axios');
 
-app.get('/', (req, res) => res.send('Hello World!'));
+// no need this part
+// app.get('/', (req, res) => res.send('Hello World!'));
 
+// put your customized urls here:
+// ip address grabed from Arduino serial monitor + your routes
 const onLedIp = 'htpp://192.168.0.109/?led=turnnnnnnnon';
 const offLedIp = 'htpp://192.168.0.109/?led=turnnnnnnnoff';
 let indicator = 'off';
