@@ -67,13 +67,11 @@ TCP/IP defines how devices on one network communicate with devices on another ne
 IP address 192.168.0.1 is the address of some home-use broadband router, it’s mainly the default value of a variety of D-Link and Netgear model routers. And you can change it using the network router management console at any time. 192.168.0.1 is a private IPv4 network address. When DHCP assigning IPs, they normally are something like 192.168.0.x.
 
 ### Steps
-1. Connect the Esp8266 to the Wi-Fi router using SSID(the name of network wifi) and password of network Wifi, where the esp8266 connect to our wifi and create a webserver. The server can be accessed by looking through the serial Monitor of the Arduino window or you can also log into your Wifi router and check for the list of clients connected to your Wi-Fi router.
-2. Setup
-
+- Switch your laptop wifi to `kineviz_test`
+- Connect the Esp8266 to the Wi-Fi router using SSID(the name of network wifi) and password of network Wifi, where the esp8266 connect to our wifi and create a webserver. The server can be accessed by looking through the serial Monitor of the Arduino window or you can also log into your Wifi router and check for the list of clients connected to your Wi-Fi router.
+- Setup function:
 Boilerplate code. Set up wifi; Connect to wifi and print IP address that been assigned to the NodeMCU to the serial monitor.
-
-3. Loop
-
+- Loop function:
 Boilerplate code for looking for connection.
 Parse URL, and depends on the request to turn the LED on / off.
 
