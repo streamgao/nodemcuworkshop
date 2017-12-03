@@ -9,7 +9,7 @@
 #define D3 0
 #define D4 2 // Same as "LED_BUILTIN", but inverted logic
 #define D5 14 // SPI Bus SCK (clock)
-#define D6 12 // SPI Bus MISO 
+#define D6 12 // SPI Bus MISO
 #define D7 13 // SPI Bus MOSI
 #define D8 15 // SPI Bus SS (CS)
 #define D9 3 // RX0 (Serial console)
@@ -19,13 +19,13 @@ int fadeAmount;
 int brightness;
 
 void setup() {
-  pinMode(D6, OUTPUT);
+  pinMode(D1, OUTPUT);
   fadeAmount = 5;
   brightness = 5;
 }
 
 void loop() {
-  analogWrite(D6, brightness);
+  analogWrite(D1, brightness);
   if (brightness == 0 || brightness == 255) {
       fadeAmount = -fadeAmount;
   }
@@ -33,6 +33,3 @@ void loop() {
   // wait for 30 milliseconds to see the dimming effect
   delay(30);
 }
-
-
-
