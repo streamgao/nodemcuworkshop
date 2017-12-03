@@ -1,8 +1,7 @@
 /*
  *  This sketch demonstrates how to set up a simple HTTP-like server.
  *  The server will set a GPIO pin depending on the request
- *    http://server_ip/gpio/0 will set the GPIO low,
- *    http://server_ip/gpio/1 will set the GPIO high
+ *    http://server_ip/ will lead you to the web page containing buttons to turn LED on/off
  *  server_ip is the IP address of the ESP8266 module, will be
  *  printed to Serial when the module is connected.
  */
@@ -20,8 +19,8 @@
 
 #include <ESP8266WiFi.h>
 
-const char* ssid = "CounterPulse Guest";
-const char* password = "0084800848";
+const char* ssid = "kineviz_test";
+const char* password = "12345678";
 
 // please put unique charactors here, otherwise you might turn on other's LED!
 const String YOUR_OFF_URL = "?led=turnnnnnnnoff";
